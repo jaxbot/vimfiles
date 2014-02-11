@@ -5,8 +5,8 @@ set encoding=utf-8
 
 " Look
 set background=dark 
-colorscheme twilight
-set guifont=Source\ Code\ Pro
+colorscheme jellybeans
+set guifont=Source\ Code\ Pro:h11
 
 set number			" line numbers
 set rnu				" relative line numbers
@@ -113,9 +113,13 @@ au FileType javascript set dictionary+=$HOME/vimfiles/bundle/vim-node/dict/node.
 
 " Netrw remote transfers
 let g:netrw_silent = 1
+let g:netrw_scp_cmd = "pscp.exe"
 
 " gcc compile C files
-autocmd filetype c nnoremap <F4> :w <CR>:!gcc % -o %:r && %:r<CR>
+autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r && %:r<CR>
+
+" java compile files
+autocmd filetype java nnoremap <Leader>c :w <CR>:!javac % && java %:r<CR>
 
 " Shortcuts 
 nnoremap <leader>g :Gstatus<CR>
@@ -124,15 +128,17 @@ nnoremap <leader>g :Gstatus<CR>
 map <C-\> :execute "Ag " . expand("<cword>") <CR>
 
 " lets start in my www folder
-cd ~/packpack/www
+cd ~/www
 
 " Brolink
+let g:bl_autostart = 1
 au BufWritePost */static/templates/*.html :BLReloadTemplate
 
 hi CursorLineNr   term=bold ctermfg=Gray gui=bold guifg=#c5c5c5
 
 " GitGutter
 let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 
 " Neocomplete
 let g:neocomplete#enable_smart_case = 1
@@ -158,3 +164,19 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " No scratch
 set completeopt-=preview
+
+" Turn off vimchat logs
+let g:vimchat_logchats = 0
+
+let g:calendar_google_calendar = 1
+
+" Full screen
+map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
+map <F12> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 230)<CR>
+
+autocmd filetype gitcommit nnoremap c :Gcommit<CR>
+
+nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
