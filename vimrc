@@ -6,13 +6,19 @@ set encoding=utf-8
 " Look
 set background=dark 
 colorscheme jellybeans
-set guifont=Source\ Code\ Pro:h11
+set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h10
 
-set number			" line numbers
-set rnu				" relative line numbers
-set guioptions=		" turn off menus, scrollbars, etc
-set backspace=2		" make backspace delete characters
+" line numbers
+set number			
+" relative line numbers
+set rnu
+" no menus, scrollbars, or other junk
+set guioptions=
 
+" make backspace delete characters
+set backspace=2
+
+" I like my leader being ','. It's easier to reach
 let mapleader = ","
 
 " Disable chimes
@@ -21,39 +27,55 @@ set t_vb =
 set visualbell t_vb=
 au GuiEnter * set visualbell t_vb=
 
-" sick of those swp/backup files
-set backupdir=~/vimfiles/tmp,.
-set directory=~/vimfiles/tmp,.
-set nobackup " DIE FOUL BEAST
+" disable backup and swap files
+set nobackup
 set noswapfile
 
+" use the OS clipboard
 set clipboard=unnamed
 
-set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
-
+" Improve Unix/Windows compatibility
+set viewoptions=folds,options,cursor,unix,slash
+" allow the cursor to pass the last character
 set virtualedit=onemore             " Cursor goes beyond last character
+" store more command history
 set history=100						" Store more history (default is 20)
-set undolevels=400					" All the undo
-set spell                           " Spell checking on
-set hidden                          " Allow buffer switching without saving
-set cursorline                  	" Highlight current line
+" store a bunch of undo history
+set undolevels=400
+" enable spell checking
+set spell
+" allow buffer switching without saving
+set hidden
 
-" Statusline
+" Status line
 set laststatus=2
-set statusline=%<%f\                     " Filename
-set statusline+=%w%h%m%r                 " Options
-set statusline+=%{fugitive#statusline()} " Git Hotness
-set statusline+=\ [%{&ff}/%Y]            " Filetype
-set statusline+=\ [%{getcwd()}]          " Current dir
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+" Filename
+set statusline=%<%f\
+" Options
+set statusline+=%w%h%m%r                 
+" Git Hotness
+set statusline+=%{fugitive#statusline()}
+" Filetype
+set statusline+=\ [%{&ff}/%Y]
+" Directory
+set statusline+=\ [%{getcwd()}]
+" File info
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%
 
-set showmatch                   " Show matching brackets/parenthesis
-set matchtime=0					" Don't blink
-set incsearch                   " Find as you type search
-set hlsearch                    " Highlight search terms
-set winminheight=0              " Windows can be 0 line high
-set ignorecase                  " Case insensitive search
-set smartcase                   " Case sensitive if we type an uppercase
+" Show matching brackets/parenthesis
+set showmatch
+" Don't blink
+set matchtime=0
+" Find as you type search
+set incsearch
+" Highlight search terms
+set hlsearch
+" Windows can be 0 line high
+set winminheight=0
+" Case insensitive search
+set ignorecase
+" Case sensitive if we type an uppercase
+set smartcase
 
 " CTRL-S
 nnoremap <silent> <C-S> :<C-u>Update<CR>
@@ -61,10 +83,14 @@ noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 
+" Window navigation
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
+
+" Use Esc to hide search highlights
+nnoremap <Esc> :nohl<CR>
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
@@ -79,7 +105,7 @@ set noexpandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set cinkeys=0{,0},:,0#,!^F
+"set cinkeys=0{,0},:,0#,!^F
 
 " Folding
 set foldmethod=syntax
@@ -97,14 +123,6 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 
-" Powerline: use ASCII characters instead of unicode
-let g:Powerline_dividers_override = ['>>', '>', '<<', '<']
-let g:Powerline_symbols = 'unicode'
-let g:Powerline_symbols_override = {
-        \ 'BRANCH': '|',
-        \ 'LINE': 'LN',
-        \ }
-
 " Neocomplete
 let g:neocomplete#enable_at_startup = 1
 
@@ -113,7 +131,10 @@ au FileType javascript set dictionary+=$HOME/vimfiles/bundle/vim-node/dict/node.
 
 " Netrw remote transfers
 let g:netrw_silent = 1
-let g:netrw_scp_cmd = "pscp.exe"
+
+if has("win32")
+	let g:netrw_scp_cmd = "pscp.exe"
+endif
 
 " gcc compile C files
 autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r && %:r<CR>
@@ -121,14 +142,12 @@ autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r && %:r<CR>
 " java compile files
 autocmd filetype java nnoremap <Leader>c :w <CR>:!javac % && java %:r<CR>
 
-" Shortcuts 
-nnoremap <leader>g :Gstatus<CR>
+" Fugitive/Git Shortcuts 
+nnoremap <leader>g :Gstatus<CR>4j
+autocmd filetype gitcommit nnoremap <buffer> c :Gcommit<CR>
 
 " Ag, the silver searcher
 map <C-\> :execute "Ag " . expand("<cword>") <CR>
-
-" lets start in my www folder
-cd ~/www
 
 " Brolink
 let g:bl_autostart = 1
@@ -144,15 +163,10 @@ let g:gitgutter_eager = 0
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 2
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplete#smart_close_popup() . "\<CR>"
+	return neocomplete#smart_close_popup() . "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -165,18 +179,13 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 " No scratch
 set completeopt-=preview
 
-" Turn off vimchat logs
-let g:vimchat_logchats = 0
-
-let g:calendar_google_calendar = 1
-
 " Full screen
 map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
 map <F12> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 230)<CR>
 
-autocmd filetype gitcommit nnoremap c :Gcommit<CR>
+" Use powerline fonts on airline
+let g:airline_powerline_fonts = 1
 
-nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+" lets start in my www folder
+cd ~/www
 
