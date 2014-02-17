@@ -1,6 +1,3 @@
-" It's not the 80s anymore, yo. We're 90s kids.
-set nocompatible
-
 set encoding=utf-8
 
 " Look
