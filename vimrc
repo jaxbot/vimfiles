@@ -3,7 +3,7 @@ set encoding=utf-8
 " Look
 set background=dark 
 colorscheme jellybeans
-set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h10
+set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline
 
 " line numbers
 set number			
@@ -32,7 +32,7 @@ set noswapfile
 set clipboard=unnamed
 
 " Improve Unix/Windows compatibility
-set viewoptions=folds,options,cursor,unix,slash
+set viewoptions=folds,options,cursor,unix
 " allow the cursor to pass the last character
 set virtualedit=onemore             " Cursor goes beyond last character
 " store more command history
@@ -86,6 +86,10 @@ map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
 
+nnoremap <C-right> :tabn<cr>
+nnoremap <C-left> :tabp<cr>
+nnoremap <C-t> :tabnew<cr>
+
 " Use Esc to hide search highlights
 nnoremap <Esc> :nohl<CR>
 
@@ -134,14 +138,13 @@ if has("win32")
 endif
 
 " gcc compile C files
-autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r && %:r<CR>
+autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r && ./%:r<CR>
 
 " java compile files
 autocmd filetype java nnoremap <Leader>c :w <CR>:!javac % && java %:r<CR>
 
 " Fugitive/Git Shortcuts 
 nnoremap <leader>g :Gstatus<CR>4j
-autocmd filetype gitcommit nnoremap <buffer> c :Gcommit<CR>
 
 " Ag, the silver searcher
 map <C-\> :execute "Ag " . expand("<cword>") <CR>
@@ -167,9 +170,6 @@ function! s:my_cr_function()
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
 
@@ -183,6 +183,6 @@ map <F12> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 230)<CR>
 " Use powerline fonts on airline
 let g:airline_powerline_fonts = 1
 
-" lets start in my www folder
-cd ~/www
+" Local stuff (access_token, www folder, etc)
+so ~/.local.vim
 
