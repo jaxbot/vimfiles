@@ -151,6 +151,21 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Fugitive/Git Shortcuts 
 nnoremap <leader>g :Gstatus<CR>4j
 
+" Unite mappings
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#set_profile('files', 'smartcase', 1)
+call unite#custom#source('line,outline','matchers','matcher_fuzzy')
+call unite#custom#source('file_rec', 'ignore_pattern', 'node_modules/')
+call unite#custom#source('file_rec', 'ignore_pattern', '.git/')
+let g:unite_source_history_yank_enable = 1
+
+nnoremap <leader>e :Unite -start-insert file_mru<cr>
+nnoremap <leader>f :Unite -start-insert file<cr>
+nnoremap <leader>s :Unite -start-insert buffer<cr>
+nnoremap <leader>y :Unite history/yank<cr>
+nnoremap <C-p> :Unite -start-insert file_rec<cr>
+
 " Ag, the silver searcher
 map <C-\> :execute "Ag " . expand("<cword>") <CR>
 
