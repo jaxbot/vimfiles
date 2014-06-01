@@ -1,7 +1,27 @@
-##My vimfiles
+## My vimfiles
 
-Here's my collection of vimfiles used for web development. It's a work in progress, but I took some time this weekend to rebuild my Vim configuration and clean things out.
+Here's my collection of my vimfiles.
 
-Windows compatible. Node.js. More to come.
+They center around:
 
-Big thanks to the creators of the plugins I use. You guys rock.
+* Node.js
+* HTML5/CSS3/JS
+* git
+* Functionality
+
+and the "living in the editor" lifestyle.
+
+It's here primarily to make it easy to sync up my systems, but if you want learn from them, suggest changes, etc., be my guest!
+
+### Instructions
+
+```
+git clone git@github.com:jaxbot/vimfiles.git ~/.vim/
+git submodule init
+git submodule update
+
+./link
+```
+
+Tada.
+
