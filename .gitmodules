@@ -85,3 +85,9 @@
 [submodule "bundle/vim-obsession"]
 	path = bundle/vim-obsession
 	url = https://github.com/tpope/vim-obsession
+[submodule "bundle/unite.vim"]
+	path = bundle/unite.vim
+	url = https://github.com/Shougo/unite.vim
+[submodule "bundle/neomru.vim"]
+	path = bundle/neomru.vim
+	url = https://github.com/Shougo/neomru.vim
