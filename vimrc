@@ -3,7 +3,7 @@ set encoding=utf-8
 " Look
 set background=dark 
 colorscheme jellybeans
-set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline
+set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h10
 
 " line numbers
 set number			
@@ -131,11 +131,13 @@ let g:neocomplete#enable_at_startup = 1
 au FileType javascript set dictionary+=$HOME/vimfiles/bundle/vim-node/dict/node.dict
 
 " Netrw remote transfers
-let g:netrw_silent = 1
-
-if has("win32")
-	let g:netrw_scp_cmd = "pscp.exe"
-endif
+let g:netrw_altv          = 1
+let g:netrw_fastbrowse    = 2
+let g:netrw_keepdir       = 0
+let g:netrw_liststyle     = 2
+let g:netrw_retmap        = 1
+let g:netrw_silent        = 1
+let g:netrw_special_syntax= 1
 
 " gcc compile C files
 autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r && ./%:r<CR>
