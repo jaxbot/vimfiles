@@ -52,3 +52,15 @@
 [submodule "bundle/gitv"]
 	path = bundle/gitv
 	url = https://github.com/gregsexton/gitv.git
+[submodule "bundle/github-issues.vim"]
+	path = bundle/github-issues.vim
+	url = git@github.com:jaxbot/github-issues.vim.git
+[submodule "bundle/selective-undo.vim"]
+	path = bundle/selective-undo.vim
+	url = git@github.com:jaxbot/selective-undo.vim.git
+[submodule "bundle/ag.vim"]
+	path = bundle/ag.vim
+	url = git@github.com:rking/ag.vim.git
+[submodule "bundle/brolink.vim"]
+	path = bundle/brolink.vim
+	url = git@github.com:jaxbot/brolink.vim.git
