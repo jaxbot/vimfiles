@@ -25,3 +25,13 @@ git submodule update
 
 Tada.
 
+### My vim version
+
+On OSX:
+
+```
+brew update
+brew install python
+brew install macvim --override-system-vim --custom-icons --with-lua
+```
+
