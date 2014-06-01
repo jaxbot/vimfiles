@@ -145,6 +145,9 @@ autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r && ./%:r<CR>
 " java compile files
 autocmd filetype java nnoremap <Leader>c :w <CR>:!javac % && java %:r<CR>
 
+" Make Markdown actually detected as Markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 " Fugitive/Git Shortcuts 
 nnoremap <leader>g :Gstatus<CR>4j
 
@@ -184,6 +187,7 @@ map <F12> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 230)<CR>
 
 " Use powerline fonts on airline
 let g:airline_powerline_fonts = 1
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Local stuff (access_token, www folder, etc)
 so ~/.local.vim
