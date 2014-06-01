@@ -64,3 +64,6 @@
 [submodule "bundle/brolink.vim"]
 	path = bundle/brolink.vim
 	url = git@github.com:jaxbot/brolink.vim.git
+[submodule "bundle/vim-sleuth"]
+	path = bundle/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth
