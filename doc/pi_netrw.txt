@@ -1,4 +1,4 @@
-*pi_netrw.txt*  For Vim version 7.4.  Last change: 2014 May 30
+*pi_netrw.txt*  For Vim version 7.4.  Last change: 2014 Jun 01
 
 	    ------------------------------------------------
 	    NETRW REFERENCE MANUAL    by Charles E. Campbell
@@ -1313,7 +1313,7 @@ name.
 
 One may make a preferred listing style your default; see |g:netrw_liststyle|.
 As an example, by putting the following line in your .vimrc, >
-	let g:netrw_liststyle= 4
+	let g:netrw_liststyle= 3
 the tree style will become your default listing style.
 
 One typical way to use the netrw tree display is to: >
@@ -3314,6 +3314,10 @@ which is loaded automatically at startup (assuming :set nocp).
 				  on the right, and will work with remote
 				  files.
 		May 29, 2014	* implemented :NetrwC  (see |netrw-:NetrwC|)
+		Jun 01, 2014	* Removed some "silent"s from commands used
+				  to implemented scp://... and pscp://...
+				  directory listing.  Permits request for
+				  password to appear.
 	v152:	Apr 08, 2014	* uses the |'noswapfile'| option (requires {{{2
 				  vim 7.4 with patch 213)
 				* (Enno Nagel) turn |'rnu'| off in netrw

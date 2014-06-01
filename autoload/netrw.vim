@@ -1,7 +1,7 @@
 " netrw.vim: Handles file transfer and remote directory listing across
 "            AUTOLOAD SECTION
-" Date:		May 30, 2014
-" Version:	153f	ASTRO-ONLY
+" Date:		Jun 01, 2014
+" Version:	153g	ASTRO-ONLY
 " Maintainer:	Charles E Campbell <NdrOchip@ScampbellPfamily.AbizM-NOSPAM>
 " GetLatestVimScripts: 1075 1 :AutoInstall: netrw.vim
 " Copyright:    Copyright (C) 1999-2013 Charles E. Campbell {{{1
@@ -29,7 +29,7 @@ if v:version < 704 || !has("patch213")
  let s:needpatch213= 1
  finish
 endif
-let g:loaded_netrw = "v153f"
+let g:loaded_netrw = "v153g"
 if !exists("s:NOTE")
  let s:NOTE    = 0
  let s:WARNING = 1
@@ -1708,8 +1708,7 @@ fun! s:NetrwSafeOptions()
   setl noaw
   setl nobl
   setl nobomb
-  " patch
-  "setl bt=nofile
+  setl bt=nofile
   setl noci
   setl nocin
   if g:netrw_liststyle == s:TREELIST
@@ -5539,6 +5538,7 @@ endfun
 
 " ---------------------------------------------------------------------
 " s:NetrwMakeDir: this function makes a directory (both local and remote) {{{2
+"                 implements the "d" mapping.
 fun! s:NetrwMakeDir(usrhost)
 "  call Dfunc("s:NetrwMakeDir(usrhost<".a:usrhost.">)")
 
@@ -9048,8 +9048,8 @@ fun! s:NetrwRemoteListing()
    let listcmd= s:MakeSshCmd(g:netrw_list_cmd)
 "   call Decho("listcmd<".listcmd."> (using g:netrw_list_cmd)")
    if g:netrw_scp_cmd =~ '^pscp'
-"    call Decho("1: exe sil r! ".shellescape(listcmd.s:path, 1))
-    exe "sil! keepj r! ".listcmd.shellescape(s:path, 1)
+"    call Decho("1: exe r! ".shellescape(listcmd.s:path, 1))
+    exe "keepj r! ".listcmd.shellescape(s:path, 1)
     " remove rubbish and adjust listing format of 'pscp' to 'ssh ls -FLa' like
     sil! keepj g/^Listing directory/keepj d
     sil! keepj g/^d[-rwx][-rwx][-rwx]/keepj s+$+/+e
@@ -9063,11 +9063,11 @@ fun! s:NetrwRemoteListing()
     endif
    else
     if s:path == ""
-"     call Decho("2: exe sil r! ".listcmd)
-     exe "sil! keepj keepalt r! ".listcmd
+"     call Decho("2: exe r! ".listcmd)
+     exe "keepj keepalt r! ".listcmd
     else
-"     call Decho("3: exe sil r! ".listcmd.' '.shellescape(fnameescape(s:path),1))
-     exe "sil! keepj keepalt r! ".listcmd.' '.shellescape(fnameescape(s:path),1)
+"     call Decho("3: exe r! ".listcmd.' '.shellescape(fnameescape(s:path),1))
+     exe "keepj keepalt r! ".listcmd.' '.shellescape(fnameescape(s:path),1)
 "     call Decho("listcmd<".listcmd."> path<".s:path.">")
     endif
    endif
@@ -11057,3 +11057,4 @@ unlet s:keepcpo
 
 " ------------------------------------------------------------------------
 " Modelines: {{{1
+" vim:ts=8 fdm=marker
