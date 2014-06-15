@@ -21,6 +21,8 @@ git submodule init
 git submodule update
 
 ./link
+
+:PluginInstall
 ```
 
 Tada.
