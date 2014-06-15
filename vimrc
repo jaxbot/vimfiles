@@ -115,6 +115,7 @@ set nofoldenable
 set foldlevel=1
 
 " Plugins
+set rtp+=~/.vim/vundle/
 call vundle#begin()
 
 " Vundle
