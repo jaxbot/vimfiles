@@ -157,6 +157,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-obsession'
 
+call vundle#end()
+
 " These must be after pathogen loads
 syntax on
 filetype on 
