@@ -91,3 +91,6 @@
 [submodule "bundle/neomru.vim"]
 	path = bundle/neomru.vim
 	url = https://github.com/Shougo/neomru.vim
+[submodule "vundle"]
+	path = vundle
+	url = https://github.com/gmarik/Vundle.vim.git
