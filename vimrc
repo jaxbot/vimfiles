@@ -159,7 +159,6 @@ Plugin 'tpope/vim-obsession'
 
 call vundle#end()
 
-" These must be after pathogen loads
 syntax on
 filetype on 
 filetype plugin on
