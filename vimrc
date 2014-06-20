@@ -139,6 +139,7 @@ Plugin 'rking/ag.vim'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neomru.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Syntaxes
 Plugin 'tpope/vim-haml'
