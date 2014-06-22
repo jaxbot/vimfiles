@@ -140,6 +140,8 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'mattn/gist-vim'
+Bundle 'mattn/webapi-vim'
 
 " Syntaxes
 Plugin 'tpope/vim-haml'
@@ -224,6 +226,9 @@ let g:gitgutter_eager = 0
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 2
 
+" Tell eclim to play nice with Neocomplete
+let g:EclimCompletionMethod = 'omnifunc'
+
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
@@ -244,6 +249,11 @@ map <F12> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 230)<CR>
 " Use powerline fonts on airline
 let g:airline_powerline_fonts = 1
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Gist
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+map <leader>p :Gist -c<CR>
 
 " Local stuff (access_token, www folder, etc)
 so ~/.local.vim
