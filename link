@@ -2,6 +2,11 @@
 
 echo "symlinking dotfiles to ~/"
 
+rm ~/.vimrc
+rm ~/.tmux.conf
+rm ~/.zshrc
+
 ln vimrc ~/.vimrc
 ln .tmux.conf ~/.tmux.conf
+ln .zshrc ~/.zshrc
 
