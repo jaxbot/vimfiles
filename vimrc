@@ -1,12 +1,12 @@
 set encoding=utf-8
 
 " Look
-set background=dark 
+set background=dark
 colorscheme jellybeans
 set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h10
 
 " line numbers
-set number			
+set number
 " relative line numbers
 set rnu
 " no menus, scrollbars, or other junk
@@ -20,7 +20,7 @@ let mapleader = ","
 
 " Disable chimes
 set visualbell
-set t_vb = 
+set t_vb =
 set visualbell t_vb=
 au GuiEnter * set visualbell t_vb=
 
@@ -34,9 +34,9 @@ set clipboard=unnamed
 " Improve Unix/Windows compatibility
 set viewoptions=folds,options,cursor,unix
 " allow the cursor to pass the last character
-set virtualedit=onemore             " Cursor goes beyond last character
+set virtualedit=onemore
 " store more command history
-set history=100						" Store more history (default is 20)
+set history=100
 " store a bunch of undo history
 set undolevels=400
 " enable spell checking
@@ -49,7 +49,7 @@ set laststatus=2
 " Filename
 set statusline=%<%f\
 " Options
-set statusline+=%w%h%m%r                 
+set statusline+=%w%h%m%r
 " Git Hotness
 set statusline+=%{fugitive#statusline()}
 " Filetype
@@ -96,7 +96,7 @@ nnoremap <Esc> :nohl<CR>
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
 nnoremap k gk
-	
+
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
@@ -163,7 +163,7 @@ Plugin 'tpope/vim-obsession'
 call vundle#end()
 
 syntax on
-filetype on 
+filetype on
 filetype plugin on
 filetype plugin indent on
 
@@ -191,7 +191,7 @@ autocmd filetype java nnoremap <Leader>c :w <CR>:!javac % && java %:r<CR>
 " Make Markdown actually detected as Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" Fugitive/Git Shortcuts 
+" Fugitive/Git Shortcuts
 nnoremap <leader>g :Gstatus<CR>4j
 
 " Unite mappings
@@ -243,7 +243,7 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 set completeopt-=preview
 
 " Full screen
-map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR> 
+map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 map <F12> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 230)<CR>
 
 " Use powerline fonts on airline
