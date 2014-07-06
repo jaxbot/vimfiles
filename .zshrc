@@ -16,11 +16,12 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/bin:/Users/jonathan/android/tools:/Users/jonathan/android/build-tools:/Users/jonathan/android/platform-tools:/Users/jonathan/android/platforms:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="/usr/local/bin:/Users/jonathan/android/tools:/Users/jonathan/android/build-tools:/Users/jonathan/android/platform-tools:/Users/jonathan/android/platforms:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH"
 
 export EDITOR='vim'
 export ANDROID_HOME="/Users/jonathan/android/"
 
 bindkey -v
 
+alias widget="cd ~/www/materia/current/static/sandbox"
 
