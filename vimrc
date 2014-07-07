@@ -141,7 +141,7 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'mattn/gist-vim'
-Bundle 'mattn/webapi-vim'
+Plugin 'mattn/webapi-vim'
 
 " Syntaxes
 Plugin 'tpope/vim-haml'
@@ -151,6 +151,8 @@ Plugin 'myhere/vim-nodejs-complete'
 Plugin 'moll/vim-node'
 Plugin 'wavded/vim-stylus'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'groenewege/vim-less'
 
 " Misc tpope goodies
 Plugin 'tpope/vim-sleuth'
