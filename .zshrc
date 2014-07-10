@@ -25,3 +25,5 @@ bindkey -v
 
 alias widget="cd ~/www/materia/current/static/sandbox"
 
+bindkey '^R' history-incremental-pattern-search-backward
+
