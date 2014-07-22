@@ -130,8 +130,8 @@ Plugin 'jaxbot/github-issues.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'airblade/vim-gitgutter'
-
 " Tools
+Plugin 'jaxbot/semantic-highlight'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/loremipsum'
