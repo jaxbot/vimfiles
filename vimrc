@@ -143,6 +143,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'scrooloose/syntastic'
 
 " Syntaxes
 Plugin 'tpope/vim-haml'
