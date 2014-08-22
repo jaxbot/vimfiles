@@ -131,7 +131,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'airblade/vim-gitgutter'
 " Tools
-Plugin 'jaxbot/semantic-highlight'
+Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/loremipsum'
@@ -143,6 +143,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'jaxbot/vCoolor.vim'
 
 " Syntaxes
 Plugin 'tpope/vim-haml'
@@ -201,16 +204,16 @@ nnoremap <leader>g :Gstatus<CR>4j
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#set_profile('files', 'smartcase', 1)
+call unite#custom#profile('files', 'filters', ['sorter_rank'])
 call unite#custom#source('line,outline','matchers','matcher_fuzzy')
 call unite#custom#source('file_rec', 'ignore_pattern', 'node_modules/')
 call unite#custom#source('file_rec', 'ignore_pattern', '.git/')
 let g:unite_source_history_yank_enable = 1
 
 nnoremap <leader>e :Unite -start-insert file_mru<cr>
-nnoremap <leader>f :Unite -start-insert file<cr>
+nnoremap <leader>f :Unite -start-insert file_rec<cr>
 nnoremap <leader>s :Unite -start-insert buffer<cr>
 nnoremap <leader>y :Unite history/yank<cr>
-nnoremap <C-p> :Unite -start-insert file_rec<cr>
 
 " Ag, the silver searcher
 map <C-\> :execute "Ag " . expand("<cword>") <CR>
@@ -251,7 +254,6 @@ map <F12> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 230)<CR>
 
 " Use powerline fonts on airline
 let g:airline_powerline_fonts = 1
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Gist
 let g:gist_clip_command = 'pbcopy'
