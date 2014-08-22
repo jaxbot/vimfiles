@@ -146,6 +146,7 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'jaxbot/vCoolor.vim'
+Plugin 'scrooloose/syntastic'
 
 " Syntaxes
 Plugin 'tpope/vim-haml'
