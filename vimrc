@@ -264,3 +264,9 @@ map <leader>p :Gist -c<CR>
 " Local stuff (access_token, www folder, etc)
 so ~/.local.vim
 
+let g:github_upstream_issues = 1
+
+nnoremap ,cd :lcd %:p:h<CR>
+
+set autoread
+
