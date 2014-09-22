@@ -158,6 +158,7 @@ Plugin 'wavded/vim-stylus'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'groenewege/vim-less'
+Plugin 'elzr/vim-json'
 
 " Misc tpope goodies
 Plugin 'tpope/vim-sleuth'
@@ -179,6 +180,11 @@ let g:neocomplete#enable_at_startup = 1
 
 " Nodejs dictionary
 au FileType javascript set dictionary+=$HOME/vimfiles/bundle/vim-node/dict/node.dict
+
+" Show trailing whitespace
+highlight ExtraWhitespace ctermbg=darkred guibg=#382424
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 
 " Netrw remote transfers
 let g:netrw_altv          = 1
@@ -269,4 +275,6 @@ let g:github_upstream_issues = 1
 nnoremap ,cd :lcd %:p:h<CR>
 
 set autoread
+
+command! JSONPretty %!python -m json.tool
 
