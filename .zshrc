@@ -29,3 +29,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 
 export NVM_DIR="/Users/jonathan/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Have each shell use its own history, instead of combining them globally
+setopt APPEND_HISTORY
+
