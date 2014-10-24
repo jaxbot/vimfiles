@@ -16,7 +16,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/bin:/Users/jonathan/Applications/Android\ Studio.app/sdk/tools:/Applications/Android\ Studio.app/sdk/build-tools:/Users/jonathan/Applications/Android\ Studio.app/sdk/platform-tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Applications/Android Studio.app/sdk/platform-tools:$PATH"
 
 export EDITOR='vim'
 
