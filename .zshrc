@@ -1,32 +1,23 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# In ~/.oh-my-zsh/themes/
 ZSH_THEME="awesomepanda"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
+# Show dots while loading completion
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(git ant osx brew gradle npm node sudo tmux github themes)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Applications/Android Studio.app/sdk/platform-tools:$PATH"
-
 export EDITOR='vim'
-
 bindkey -v
-
-alias widget="cd ~/www/materia/current/static/sandbox"
-
 bindkey '^R' history-incremental-pattern-search-backward
-source $(brew --prefix nvm)/nvm.sh
 
+# Enable node version manager
+source $(brew --prefix nvm)/nvm.sh
 export NVM_DIR="/Users/jonathan/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
