@@ -1,6 +1,6 @@
 ## My vimfiles
 
-Here's my collection of my vimfiles.
+Here's my collection of my vimfiles, along with a few other dotfiles and misc tools.
 
 They center around:
 

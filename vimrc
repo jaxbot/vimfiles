@@ -28,6 +28,9 @@ au GuiEnter * set visualbell t_vb=
 set nobackup
 set noswapfile
 
+" auto read
+set autoread
+
 " use the OS clipboard
 set clipboard=unnamed
 
@@ -106,7 +109,6 @@ set noexpandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-"set cinkeys=0{,0},:,0#,!^F
 
 " Folding
 set foldmethod=syntax
@@ -230,8 +232,6 @@ map <C-\> :execute "Ag " . expand("<cword>") <CR>
 let g:bl_autostart = 1
 au BufWritePost */static/templates/*.html :BLReloadTemplate
 
-hi CursorLineNr   term=bold ctermfg=Gray gui=bold guifg=#c5c5c5
-
 " GitGutter
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
@@ -239,9 +239,6 @@ let g:gitgutter_eager = 0
 " Neocomplete
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 2
-
-" Tell eclim to play nice with Neocomplete
-let g:EclimCompletionMethod = 'omnifunc'
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -256,10 +253,6 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 " No scratch
 set completeopt-=preview
 
-" Full screen
-map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
-map <F12> <Esc>:call libcallnr("vimtweak.dll", "SetAlpha", 230)<CR>
-
 " Use powerline fonts on airline
 let g:airline_powerline_fonts = 1
 
@@ -268,14 +261,14 @@ let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 map <leader>p :Gist -c<CR>
 
-" Local stuff (access_token, www folder, etc)
-so ~/.local.vim
-
 let g:github_upstream_issues = 1
 
-nnoremap ,cd :lcd %:p:h<CR>
+" Change dir to file path on ,d
+nnoremap ,d :lcd %:p:h<CR>
 
-set autoread
-
+" Prettify JSON command
 command! JSONPretty %!python -m json.tool
+
+" Local stuff (access_token, www folder, etc)
+so ~/.local.vim
 
