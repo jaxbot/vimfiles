@@ -170,6 +170,7 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-dispatch'
 
 call vundle#end()
 
@@ -268,6 +269,12 @@ nnoremap ,d :lcd %:p:h<CR>
 
 " Prettify JSON command
 command! JSONPretty %!python -m json.tool
+
+" Yosemite shell bug workaround
+" https://github.com/gmarik/Vundle.vim/issues/510
+if has("gui_macvim")
+    set shell=/bin/bash\ -l
+endif
 
 " Local stuff (access_token, www folder, etc)
 so ~/.local.vim
