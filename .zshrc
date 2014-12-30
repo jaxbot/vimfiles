@@ -24,3 +24,9 @@ export NVM_DIR="/Users/jonathan/.nvm"
 # Have each shell use its own history, instead of combining them globally
 setopt APPEND_HISTORY
 
+# Lolcommits settings
+# https://github.com/mroth/lolcommits
+export LOLCOMMITS_DELAY=1
+export LOLCOMMITS_FORK=1
+export LOLCOMMITS_ANIMATE=2
+
