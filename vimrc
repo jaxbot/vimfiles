@@ -172,6 +172,9 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-dispatch'
 
+" Dash integration
+Plugin 'rizzatti/dash.vim'
+
 call vundle#end()
 
 syntax on
@@ -263,12 +266,20 @@ let g:gist_detect_filetype = 1
 map <leader>p :Gist -c<CR>
 
 let g:github_upstream_issues = 1
+let g:gissues_async_omni = 1
 
 " Change dir to file path on ,d
 nnoremap ,d :lcd %:p:h<CR>
 
 " Prettify JSON command
 command! JSONPretty %!python -m json.tool
+
+" Dash
+nmap <silent> <leader>z <Plug>DashSearch
+
+" Blog custom settings
+autocmd BufWritePost */jme/* silent :!node moderate/generate.js devel
+autocmd BufWritePost */jme/* silent :BLReloadPage
 
 " Yosemite shell bug workaround
 " https://github.com/gmarik/Vundle.vim/issues/510
