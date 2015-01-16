@@ -5,33 +5,32 @@ set background=dark
 colorscheme jellybeans
 set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline:h10
 
-" line numbers
+" Show line numbers
 set number
-" relative line numbers
+" Relative line numbers
 set rnu
-" no menus, scrollbars, or other junk
+" No menus, scrollbars, or other junk
 set guioptions=
 
-" make backspace delete characters
+" Make backspace delete characters
 set backspace=2
 
 " I like my leader being ','. It's easier to reach
 let mapleader = ","
 
-" Disable chimes
+" Disable chimes when pressing something invalid, etc.
 set visualbell
 set t_vb =
 set visualbell t_vb=
 au GuiEnter * set visualbell t_vb=
 
-" disable backup and swap files
+" Disable backup and swap files
 set nobackup
 set noswapfile
 
-" auto read
+" Automatically load changed files
 set autoread
-
-" use the OS clipboard
+" Use the OS clipboard
 set clipboard=unnamed
 
 " Improve Unix/Windows compatibility
@@ -47,24 +46,12 @@ set spell
 " allow buffer switching without saving
 set hidden
 
-" Status line
+" Show status line
 set laststatus=2
-" Filename
-set statusline=%<%f\
-" Options
-set statusline+=%w%h%m%r
-" Git Hotness
-set statusline+=%{fugitive#statusline()}
-" Filetype
-set statusline+=\ [%{&ff}/%Y]
-" Directory
-set statusline+=\ [%{getcwd()}]
-" File info
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%
 
 " Show matching brackets/parenthesis
 set showmatch
-" Don't blink
+" Don't blink when matching
 set matchtime=0
 " Find as you type search
 set incsearch
@@ -77,6 +64,21 @@ set ignorecase
 " Case sensitive if we type an uppercase
 set smartcase
 
+" Indentation options
+set autoindent
+set noexpandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" Folding
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
+
+
+" Mappings I like
 " CTRL-S
 nnoremap <silent> <C-S> :<C-u>Update<CR>
 noremap <C-S> :update<CR>
@@ -103,19 +105,6 @@ nnoremap k gk
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
-" Indent options
-set autoindent
-set noexpandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-
-" Folding
-set foldmethod=syntax
-set foldnestmax=10
-set nofoldenable
-set foldlevel=1
-
 " Plugins
 set rtp+=~/.vim/vundle/
 call vundle#begin()
@@ -128,52 +117,45 @@ Plugin 'jaxbot/selective-undo.vim'
 Plugin 'jaxbot/brolink.vim'
 
 " Git/github integration
-Plugin 'jaxbot/github-issues.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-lawrencium'
+Plugin 'tpope/vim-fugitive'             " The mother of all Git plugins, most build off of this
+Plugin 'airblade/vim-gitgutter'         " Show git hunk changes on the gutter (near line numbers)
+Plugin 'gregsexton/gitv'                " Allows easily viewing file history, integrated with Fugitive
+Plugin 'jaxbot/github-issues.vim'       " Pulls in GitHub issues into Vim
+Plugin 'mattn/gist-vim'                 " Allows quickly posting to Gist
+Plugin 'mattn/webapi-vim'               " Support library for above
+Plugin 'vim-lawrencium'                 " Mercurial integration for Vim
 " Tools
-Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/loremipsum'
-Plugin 'rking/ag.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/neomru.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'jaxbot/vCoolor.vim'
-Plugin 'scrooloose/syntastic'
-
+Plugin 'jaxbot/semantic-highlight.vim'  " Allows highlighting variables by name rather than type
+Plugin 'bling/vim-airline'              " Better status bar
+Plugin 'scrooloose/nerdtree'            " File picker bar
+Plugin 'vim-scripts/loremipsum'         " Dummy text generator
+Plugin 'rking/ag.vim'                   " Easy searching with Ag (like Ack)
+Plugin 'Shougo/neocomplete.vim'         " Autocomplete/omnicomplete
+Plugin 'Shougo/unite.vim'               " I use this for file/buffer searching/switching
+Plugin 'Shougo/neomru.vim'              " Component of above
+Plugin 'christoomey/vim-tmux-navigator' " Integrate Vim with tmux so I can seamlessly move between splits
+Plugin 'edkolev/tmuxline.vim'           " Build tmux status lines based on the airline in Vim
+Plugin 'jaxbot/vCoolor.vim'             " Color picker
+Plugin 'scrooloose/syntastic'           " Syntax checker
+Plugin 'godlygeek/tabular'              " I installed this to align these comments
+Plugin 'rizzatti/dash.vim'              " Dash integration
 " Syntaxes
-Plugin 'tpope/vim-haml'
-Plugin 'evanmiller/nginx-vim-syntax'
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'myhere/vim-nodejs-complete'
-Plugin 'moll/vim-node'
-Plugin 'wavded/vim-stylus'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'groenewege/vim-less'
-Plugin 'elzr/vim-json'
-
+Plugin 'tpope/vim-haml'                 " HAML, Sass, Scss
+Plugin 'evanmiller/nginx-vim-syntax'    " Nginx configuration file coloring
+Plugin 'jnwhiteh/vim-golang'            " Go
+Plugin 'myhere/vim-nodejs-complete'     " Autocomplete for Node.js
+Plugin 'moll/vim-node'                  " Easy node module opening
+Plugin 'wavded/vim-stylus'              " Stylus syntax
+Plugin 'jelera/vim-javascript-syntax'   " Better JavaScript syntax handling
+Plugin 'kchmck/vim-coffee-script'       " CoffeeScript support
+Plugin 'groenewege/vim-less'            " LESS support
+Plugin 'elzr/vim-json'                  " Better JSON handling
 " Misc tpope goodies
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-scriptease'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-dispatch'
-
-" Dash integration
-Plugin 'rizzatti/dash.vim'
+Plugin 'tpope/vim-sleuth'               " Automatically determine indent settings for file
+Plugin 'tpope/vim-scriptease'           " Tools for building more Vim plugins
+Plugin 'tpope/vim-eunuch'               " Unix helpful commands (i.e. Unlink)
+Plugin 'tpope/vim-commentary'           " Comment things out
+Plugin 'tpope/vim-dispatch'             " Build runner
 
 call vundle#end()
 
@@ -265,7 +247,10 @@ let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 map <leader>p :Gist -c<CR>
 
+" Github-issues.vim
+" Search upstream issues as well (useful for forks)
 let g:github_upstream_issues = 1
+" Use threading
 let g:gissues_async_omni = 1
 
 " Change dir to file path on ,d
