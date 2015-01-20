@@ -77,6 +77,8 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=1
 
+" No scratch (little box that shows a definition)
+set completeopt-=preview
 
 " Mappings I like
 " CTRL-S
@@ -90,13 +92,6 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
-
-nnoremap <C-right> :tabn<cr>
-nnoremap <C-left> :tabp<cr>
-nnoremap <C-t> :tabnew<cr>
-
-" Use Esc to hide search highlights
-nnoremap <Esc> :nohl<CR>
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
@@ -159,21 +154,32 @@ Plugin 'tpope/vim-dispatch'             " Build runner
 
 call vundle#end()
 
+" Now that all syntax plugins are in the runtime path, turn on the syntax engine
 syntax on
 filetype on
 filetype plugin on
 filetype plugin indent on
 
+" Plugin configuration
+
 " Neocomplete
+" Automatically suggest things
 let g:neocomplete#enable_at_startup = 1
-
-" Nodejs dictionary
+" test matches Test and test, but Test only matches Test
+let g:neocomplete#enable_smart_case = 1
+" Show starting at 2 characters
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+" Nodejs dictionary, used by neocomplete through omnicomplete
 au FileType javascript set dictionary+=$HOME/vimfiles/bundle/vim-node/dict/node.dict
-
-" Show trailing whitespace
-highlight ExtraWhitespace ctermbg=darkred guibg=#382424
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    return neocomplete#smart_close_popup() . "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
 
 " Netrw remote transfers
 let g:netrw_altv          = 1
@@ -184,17 +190,9 @@ let g:netrw_retmap        = 1
 let g:netrw_silent        = 1
 let g:netrw_special_syntax= 1
 
-" gcc compile C files
-autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r && ./%:r<CR>
-
-" java compile files
-autocmd filetype java nnoremap <Leader>c :w <CR>:!javac % && java %:r<CR>
-
-" Make Markdown actually detected as Markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" Fugitive/Git Shortcuts
-nnoremap <leader>g :Gstatus<CR>4j
+" Airline
+" Use powerline fonts on airline
+let g:airline_powerline_fonts = 1
 
 " Unite mappings
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -205,53 +203,51 @@ call unite#custom#source('line,outline','matchers','matcher_fuzzy')
 call unite#custom#source('file_rec', 'ignore_pattern', 'node_modules/')
 call unite#custom#source('file_rec', 'ignore_pattern', '.git/')
 let g:unite_source_history_yank_enable = 1
-
 nnoremap <leader>e :Unite -start-insert file_mru<cr>
 nnoremap <leader>f :Unite -start-insert file_rec<cr>
 nnoremap <leader>s :Unite -start-insert buffer<cr>
 nnoremap <leader>y :Unite history/yank<cr>
 
-" Ag, the silver searcher
+" Ag, the silver searcher mapping
 map <C-\> :execute "Ag " . expand("<cword>") <CR>
 
-" Brolink
+" Browserlink.vim
 let g:bl_autostart = 1
 au BufWritePost */static/templates/*.html :BLReloadTemplate
-
-" GitGutter
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-
-" Neocomplete
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-	return neocomplete#smart_close_popup() . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-
-" No scratch
-set completeopt-=preview
-
-" Use powerline fonts on airline
-let g:airline_powerline_fonts = 1
-
-" Gist
-let g:gist_clip_command = 'pbcopy'
-let g:gist_detect_filetype = 1
-map <leader>p :Gist -c<CR>
 
 " Github-issues.vim
 " Search upstream issues as well (useful for forks)
 let g:github_upstream_issues = 1
 " Use threading
 let g:gissues_async_omni = 1
+
+" GitGutter
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
+" Gist
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+map <leader>p :Gist -c<CR>
+
+" Other mappings and configuration
+
+" Convenient mappings for compiling and running quick, used mostly for school
+" gcc compile C files
+autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r && ./%:r<CR>
+" java compile files
+autocmd filetype java nnoremap <Leader>c :w <CR>:!javac % && java %:r<CR>
+
+" Fugitive/Git Shortcuts
+nnoremap <leader>g :Gstatus<CR>4j
+
+" Make Markdown actually detected as Markdown instead of the default
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Show trailing whitespace as red
+highlight ExtraWhitespace ctermbg=darkred guibg=#382424
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 
 " Change dir to file path on ,d
 nnoremap ,d :lcd %:p:h<CR>
@@ -262,7 +258,7 @@ command! JSONPretty %!python -m json.tool
 " Dash
 nmap <silent> <leader>z <Plug>DashSearch
 
-" Blog custom settings
+" Blog custom settings (rebuild on save)
 autocmd BufWritePost */jme/* silent :!node moderate/generate.js devel
 autocmd BufWritePost */jme/* silent :BLReloadPage
 
@@ -272,6 +268,8 @@ if has("gui_macvim")
     set shell=/bin/bash\ -l
 endif
 
-" Local stuff (access_token, www folder, etc)
-so ~/.local.vim
+" Local stuff (access_token, etc)
+if filereadable("~/.local.vim")
+    so ~/.local.vim
+endif
 
