@@ -109,7 +109,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " <3
 Plugin 'jaxbot/selective-undo.vim'
-Plugin 'jaxbot/brolink.vim'
+Plugin 'jaxbot/browserlink.vim'
 
 " Git/github integration
 Plugin 'tpope/vim-fugitive'             " The mother of all Git plugins, most build off of this
@@ -145,6 +145,8 @@ Plugin 'jelera/vim-javascript-syntax'   " Better JavaScript syntax handling
 Plugin 'kchmck/vim-coffee-script'       " CoffeeScript support
 Plugin 'groenewege/vim-less'            " LESS support
 Plugin 'elzr/vim-json'                  " Better JSON handling
+Plugin 'pangloss/vim-javascript'        " Support library for above
+Plugin 'mxw/vim-jsx'                    " JSX highlighting
 " Misc tpope goodies
 Plugin 'tpope/vim-sleuth'               " Automatically determine indent settings for file
 Plugin 'tpope/vim-scriptease'           " Tools for building more Vim plugins
@@ -262,6 +264,9 @@ nmap <silent> <leader>z <Plug>DashSearch
 autocmd BufWritePost */jme/* silent :!node moderate/generate.js devel
 autocmd BufWritePost */jme/* silent :BLReloadPage
 
+" JSX (React) config
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
 " Yosemite shell bug workaround
 " https://github.com/gmarik/Vundle.vim/issues/510
 if has("gui_macvim")
@@ -269,7 +274,6 @@ if has("gui_macvim")
 endif
 
 " Local stuff (access_token, etc)
-if filereadable("~/.local.vim")
+if filereadable(glob("~/.local.vim"))
     so ~/.local.vim
 endif
-
