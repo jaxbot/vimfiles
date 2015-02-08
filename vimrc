@@ -266,6 +266,9 @@ autocmd BufWritePost */jme/* silent :BLReloadPage
 
 " JSX (React) config
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+" Syntastic use jsxhint instead of jshint
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 
 " Yosemite shell bug workaround
 " https://github.com/gmarik/Vundle.vim/issues/510
