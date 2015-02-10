@@ -100,6 +100,9 @@ nnoremap k gk
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
+" Hide hightlights on Esc
+nnoremap <Esc> :nohl<Esc>
+
 " Plugins
 set rtp+=~/.vim/vundle/
 call vundle#begin()
@@ -153,6 +156,8 @@ Plugin 'tpope/vim-scriptease'           " Tools for building more Vim plugins
 Plugin 'tpope/vim-eunuch'               " Unix helpful commands (i.e. Unlink)
 Plugin 'tpope/vim-commentary'           " Comment things out
 Plugin 'tpope/vim-dispatch'             " Build runner
+" Hacker News, anyone?
+Plugin 'ryanss/vim-hackernews'
 
 call vundle#end()
 
