@@ -244,6 +244,8 @@ map <leader>p :Gist -c<CR>
 autocmd filetype c nnoremap <Leader>c :w <CR>:!gcc % -o %:r && ./%:r<CR>
 " java compile files
 autocmd filetype java nnoremap <Leader>c :w <CR>:!javac % && java %:r<CR>
+" node run files
+autocmd filetype javascript nnoremap <Leader>c :w <CR>:!node %<CR>
 
 " Fugitive/Git Shortcuts
 nnoremap <leader>g :Gstatus<CR>4j
