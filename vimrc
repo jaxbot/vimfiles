@@ -77,6 +77,9 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=1
 
+" Make macros render faster (lazy draw)
+set lazyredraw
+
 " No scratch (little box that shows a definition)
 set completeopt-=preview
 
@@ -101,7 +104,7 @@ nnoremap k gk
 nnoremap Y y$
 
 " Hide hightlights on Esc
-nnoremap <Esc> :nohl<Esc>
+"nnoremap <Esc> :nohl<Esc>
 
 " Plugins
 set rtp+=~/.vim/vundle/
@@ -158,6 +161,8 @@ Plugin 'tpope/vim-commentary'           " Comment things out
 Plugin 'tpope/vim-dispatch'             " Build runner
 " Hacker News, anyone?
 Plugin 'ryanss/vim-hackernews'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimproc.vim'
 
 call vundle#end()
 
@@ -287,3 +292,4 @@ endif
 if filereadable(glob("~/.local.vim"))
     so ~/.local.vim
 endif
+
