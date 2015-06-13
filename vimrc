@@ -124,7 +124,6 @@ Plugin 'gregsexton/gitv'                " Allows easily viewing file history, in
 Plugin 'jaxbot/github-issues.vim'       " Pulls in GitHub issues into Vim
 Plugin 'mattn/gist-vim'                 " Allows quickly posting to Gist
 Plugin 'mattn/webapi-vim'               " Support library for above
-Plugin 'vim-lawrencium'                 " Mercurial integration for Vim
 " Tools
 Plugin 'jaxbot/semantic-highlight.vim'  " Allows highlighting variables by name rather than type
 Plugin 'bling/vim-airline'              " Better status bar
