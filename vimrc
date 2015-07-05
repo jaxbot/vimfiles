@@ -120,7 +120,6 @@ Plugin 'jaxbot/browserlink.vim'
 " Git/github integration
 Plugin 'tpope/vim-fugitive'             " The mother of all Git plugins, most build off of this
 Plugin 'airblade/vim-gitgutter'         " Show git hunk changes on the gutter (near line numbers)
-Plugin 'gregsexton/gitv'                " Allows easily viewing file history, integrated with Fugitive
 Plugin 'jaxbot/github-issues.vim'       " Pulls in GitHub issues into Vim
 Plugin 'mattn/gist-vim'                 " Allows quickly posting to Gist
 Plugin 'mattn/webapi-vim'               " Support library for above
@@ -135,10 +134,7 @@ Plugin 'Shougo/unite.vim'               " I use this for file/buffer searching/s
 Plugin 'Shougo/neomru.vim'              " Component of above
 Plugin 'christoomey/vim-tmux-navigator' " Integrate Vim with tmux so I can seamlessly move between splits
 Plugin 'edkolev/tmuxline.vim'           " Build tmux status lines based on the airline in Vim
-Plugin 'jaxbot/vCoolor.vim'             " Color picker
 Plugin 'scrooloose/syntastic'           " Syntax checker
-Plugin 'godlygeek/tabular'              " I installed this to align these comments
-Plugin 'rizzatti/dash.vim'              " Dash integration
 " Syntaxes
 Plugin 'tpope/vim-haml'                 " HAML, Sass, Scss
 Plugin 'evanmiller/nginx-vim-syntax'    " Nginx configuration file coloring
@@ -158,10 +154,6 @@ Plugin 'tpope/vim-scriptease'           " Tools for building more Vim plugins
 Plugin 'tpope/vim-eunuch'               " Unix helpful commands (i.e. Unlink)
 Plugin 'tpope/vim-commentary'           " Comment things out
 Plugin 'tpope/vim-dispatch'             " Build runner
-" Hacker News, anyone?
-Plugin 'ryanss/vim-hackernews'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/vimproc.vim'
 
 call vundle#end()
 
