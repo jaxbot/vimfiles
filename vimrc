@@ -154,6 +154,7 @@ Plugin 'tpope/vim-scriptease'           " Tools for building more Vim plugins
 Plugin 'tpope/vim-eunuch'               " Unix helpful commands (i.e. Unlink)
 Plugin 'tpope/vim-commentary'           " Comment things out
 Plugin 'tpope/vim-dispatch'             " Build runner
+Plugin 'KabbAmine/vCoolor.vim'             " Build runner
 
 call vundle#end()
 
@@ -222,7 +223,6 @@ au BufWritePost */static/templates/*.html :BLReloadTemplate
 " Search upstream issues as well (useful for forks)
 let g:github_upstream_issues = 1
 " Use threading
-let g:gissues_async_omni = 1
 
 " GitGutter
 let g:gitgutter_realtime = 0
@@ -259,9 +259,6 @@ nnoremap ,d :lcd %:p:h<CR>
 
 " Prettify JSON command
 command! JSONPretty %!python -m json.tool
-
-" Dash
-nmap <silent> <leader>z <Plug>DashSearch
 
 " Blog custom settings (rebuild on save)
 autocmd BufWritePost */jme/* silent :!node moderate/generate.js devel
