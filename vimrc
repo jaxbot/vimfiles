@@ -107,56 +107,86 @@ nnoremap Y y$
 "nnoremap <Esc> :nohl<Esc>
 
 " Plugins
-set rtp+=~/.vim/vundle/
-call vundle#begin()
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Vundle
-Plugin 'gmarik/Vundle.vim'
+NeoBundle 'gmarik/Vundle.vim'
 
 " <3
-Plugin 'jaxbot/selective-undo.vim'
-Plugin 'jaxbot/browserlink.vim'
+NeoBundle 'jaxbot/selective-undo.vim'
+NeoBundle 'jaxbot/browserlink.vim'
 
 " Git/github integration
-Plugin 'tpope/vim-fugitive'             " The mother of all Git plugins, most build off of this
-Plugin 'airblade/vim-gitgutter'         " Show git hunk changes on the gutter (near line numbers)
-Plugin 'jaxbot/github-issues.vim'       " Pulls in GitHub issues into Vim
-Plugin 'mattn/gist-vim'                 " Allows quickly posting to Gist
-Plugin 'mattn/webapi-vim'               " Support library for above
-" Tools
-Plugin 'jaxbot/semantic-highlight.vim'  " Allows highlighting variables by name rather than type
-Plugin 'bling/vim-airline'              " Better status bar
-Plugin 'scrooloose/nerdtree'            " File picker bar
-Plugin 'vim-scripts/loremipsum'         " Dummy text generator
-Plugin 'rking/ag.vim'                   " Easy searching with Ag (like Ack)
-Plugin 'Shougo/neocomplete.vim'         " Autocomplete/omnicomplete
-Plugin 'Shougo/unite.vim'               " I use this for file/buffer searching/switching
-Plugin 'Shougo/neomru.vim'              " Component of above
-Plugin 'christoomey/vim-tmux-navigator' " Integrate Vim with tmux so I can seamlessly move between splits
-Plugin 'edkolev/tmuxline.vim'           " Build tmux status lines based on the airline in Vim
-Plugin 'scrooloose/syntastic'           " Syntax checker
-" Syntaxes
-Plugin 'tpope/vim-haml'                 " HAML, Sass, Scss
-Plugin 'evanmiller/nginx-vim-syntax'    " Nginx configuration file coloring
-Plugin 'jnwhiteh/vim-golang'            " Go
-Plugin 'myhere/vim-nodejs-complete'     " Autocomplete for Node.js
-Plugin 'moll/vim-node'                  " Easy node module opening
-Plugin 'wavded/vim-stylus'              " Stylus syntax
-Plugin 'jelera/vim-javascript-syntax'   " Better JavaScript syntax handling
-Plugin 'kchmck/vim-coffee-script'       " CoffeeScript support
-Plugin 'groenewege/vim-less'            " LESS support
-Plugin 'elzr/vim-json'                  " Better JSON handling
-Plugin 'pangloss/vim-javascript'        " Support library for above
-Plugin 'mxw/vim-jsx'                    " JSX highlighting
-" Misc tpope goodies
-Plugin 'tpope/vim-sleuth'               " Automatically determine indent settings for file
-Plugin 'tpope/vim-scriptease'           " Tools for building more Vim plugins
-Plugin 'tpope/vim-eunuch'               " Unix helpful commands (i.e. Unlink)
-Plugin 'tpope/vim-commentary'           " Comment things out
-Plugin 'tpope/vim-dispatch'             " Build runner
-Plugin 'KabbAmine/vCoolor.vim'             " Build runner
+NeoBundle 'tpope/vim-fugitive'             " The mother of all Git plugins, most build off of this
+NeoBundle 'airblade/vim-gitgutter'         " Show git hunk changes on the gutter (near line numbers)
+NeoBundle 'jaxbot/github-issues.vim'       " Pulls in GitHub issues into Vim
 
-call vundle#end()
+" Allows quickly posting to Gist
+NeoBundle 'mattn/gist-vim', {
+\  'lazy' : 1,
+\  'autoload' : {
+\    'commands' : ['Gist']
+\  }
+\}
+" Support library for above
+NeoBundle 'mattn/webapi-vim', {
+\  'lazy' : 1,
+\  'autoload' : {
+\    'function_prefix': 'webapi',
+\    'on_source' : ['gist-vim']
+\  }
+\}
+
+" Tools
+" Allows highlighting variables by name rather than type
+NeoBundle 'jaxbot/semantic-highlight.vim', {
+\  'lazy' : 1,
+\  'autoload' : {
+\    'commands' : ['SemanticHighlight']
+\  }
+\}
+" Dummy text generator
+NeoBundle 'vim-scripts/loremipsum', {
+\  'lazy' : 1,
+\  'autoload' : {
+\    'commands' : ['Loremipsum']
+\  }
+\}
+
+NeoBundle 'bling/vim-airline'              " Better status bar
+NeoBundle 'scrooloose/nerdtree'            " File picker bar
+NeoBundle 'rking/ag.vim'                   " Easy searching with Ag (like Ack)
+NeoBundle 'Shougo/neocomplete.vim'         " Autocomplete/omnicomplete
+NeoBundle 'Shougo/unite.vim'               " I use this for file/buffer searching/switching
+NeoBundle 'Shougo/neomru.vim'              " Component of above
+NeoBundle 'christoomey/vim-tmux-navigator' " Integrate Vim with tmux so I can seamlessly move between splits
+NeoBundle 'edkolev/tmuxline.vim'           " Build tmux status lines based on the airline in Vim
+NeoBundle 'scrooloose/syntastic'           " Syntax checker
+" Syntaxes
+NeoBundle 'tpope/vim-haml'                 " HAML, Sass, Scss
+NeoBundle 'evanmiller/nginx-vim-syntax'    " Nginx configuration file coloring
+NeoBundle 'jnwhiteh/vim-golang'            " Go
+NeoBundle 'myhere/vim-nodejs-complete'     " Autocomplete for Node.js
+NeoBundle 'moll/vim-node'                  " Easy node module opening
+NeoBundle 'wavded/vim-stylus'              " Stylus syntax
+NeoBundle 'jelera/vim-javascript-syntax'   " Better JavaScript syntax handling
+NeoBundle 'kchmck/vim-coffee-script'       " CoffeeScript support
+NeoBundle 'groenewege/vim-less'            " LESS support
+NeoBundle 'elzr/vim-json'                  " Better JSON handling
+NeoBundle 'pangloss/vim-javascript'        " Support library for above
+NeoBundle 'mxw/vim-jsx'                    " JSX highlighting
+" Misc tpope goodies
+NeoBundle 'tpope/vim-sleuth'               " Automatically determine indent settings for file
+NeoBundle 'tpope/vim-scriptease'           " Tools for building more Vim plugins
+NeoBundle 'tpope/vim-eunuch'               " Unix helpful commands (i.e. Unlink)
+NeoBundle 'tpope/vim-commentary'           " Comment things out
+NeoBundle 'tpope/vim-dispatch'             " Build runner
+NeoBundle 'KabbAmine/vCoolor.vim'             " Build runner
+
+call neobundle#end()
 
 " Now that all syntax plugins are in the runtime path, turn on the syntax engine
 syntax on
