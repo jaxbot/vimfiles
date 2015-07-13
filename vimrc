@@ -40,8 +40,6 @@ set virtualedit=onemore
 set history=100
 " store a bunch of undo history
 set undolevels=400
-" enable spell checking
-set spell
 " allow buffer switching without saving
 set hidden
 
@@ -103,7 +101,7 @@ nnoremap k gk
 nnoremap Y y$
 
 " Hide hightlights on Esc
-"nnoremap <Esc> :nohl<Esc>
+nnoremap ; :nohl<Esc>
 
 " Plugins
 if has('vim_starting')
@@ -208,7 +206,6 @@ let g:javascript_lazy = {
 NeoBundle 'myhere/vim-nodejs-complete', g:javascript_lazy
 " Easy node module opening
 NeoBundle 'moll/vim-node', g:javascript_lazy
-NeoBundle 'wavded/vim-stylus'              " Stylus syntax
 " Better JavaScript syntax handling
 NeoBundle 'jelera/vim-javascript-syntax', g:javascript_lazy
 " CoffeeScript support
@@ -220,14 +217,19 @@ NeoBundle 'elzr/vim-json', {
 \    'filetypes': ['json']
 \  }
 \}
-
-NeoBundle 'pangloss/vim-javascript'        " Support library for above
-NeoBundle 'mxw/vim-jsx'                    " JSX highlighting
+" Support library for above
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx', g:javascript_lazy
 " Misc tpope goodies
 " Automatically determine indent settings for file
 NeoBundle 'tpope/vim-sleuth'
 " Unix helpful commands (i.e. Unlink)
-NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-eunuch', {
+\  'lazy': 1,
+\  'autoload': {
+\    'commands': ['Unlink', 'Rename']
+\  }
+\}
 " Comment things out
 NeoBundle 'tpope/vim-commentary', {
 \  'lazy': 1,
