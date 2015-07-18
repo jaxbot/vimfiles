@@ -116,7 +116,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'tpope/vim-fugitive'             " The mother of all Git plugins, most build off of this
 
 NeoBundle 'airblade/vim-gitgutter'         " Show git hunk changes on the gutter (near line numbers)
-NeoBundle 'jaxbot/github-issues.vim'
+"NeoBundle 'jaxbot/github-issues.vim'
 
 " Allows quickly posting to Gist
 NeoBundle 'mattn/gist-vim', {
@@ -237,6 +237,8 @@ NeoBundle 'tpope/vim-commentary', {
 \    'commands': ['Commentary']
 \  }
 \}
+" Highlight navigation for F/f
+NeoBundle 'unblevable/quick-scope'
 
 call neobundle#end()
 
@@ -345,6 +347,35 @@ autocmd BufWritePost */jme/* silent :BLReloadPage
 " JSX (React) config
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
+" via https://gist.github.com/cszentkiralyi/dc61ee28ab81d23a67aa
+function! Quick_scope_selective(movement)
+    let needs_disabling = 0
+    if !g:qs_enable
+        QuickScopeToggle
+        redraw
+        let needs_disabling = 1
+    endif
+
+    let letter = nr2char(getchar())
+
+    if needs_disabling
+        QuickScopeToggle
+    endif
+
+    return a:movement . letter
+endfunction
+
+let g:qs_enable = 0
+
+nnoremap <expr> <silent> f Quick_scope_selective('f')
+nnoremap <expr> <silent> F Quick_scope_selective('F')
+nnoremap <expr> <silent> t Quick_scope_selective('t')
+nnoremap <expr> <silent> T Quick_scope_selective('T')
+vnoremap <expr> <silent> f Quick_scope_selective('f')
+vnoremap <expr> <silent> F Quick_scope_selective('F')
+vnoremap <expr> <silent> t Quick_scope_selective('t')
+vnoremap <expr> <silent> T Quick_scope_selective('T')
+
 " Yosemite shell bug workaround
 " https://github.com/gmarik/Vundle.vim/issues/510
 if has("gui_macvim")
@@ -355,4 +386,3 @@ endif
 if filereadable(glob("~/.local.vim"))
     so ~/.local.vim
 endif
-
