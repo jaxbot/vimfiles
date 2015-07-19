@@ -116,7 +116,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'tpope/vim-fugitive'             " The mother of all Git plugins, most build off of this
 
 NeoBundle 'airblade/vim-gitgutter'         " Show git hunk changes on the gutter (near line numbers)
-"NeoBundle 'jaxbot/github-issues.vim'
+NeoBundle 'jaxbot/github-issues.vim'
 
 " Allows quickly posting to Gist
 NeoBundle 'mattn/gist-vim', {
