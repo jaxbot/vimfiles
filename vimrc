@@ -115,8 +115,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Git/github integration
 NeoBundle 'tpope/vim-fugitive'             " The mother of all Git plugins, most build off of this
 
-NeoBundle 'airblade/vim-gitgutter'         " Show git hunk changes on the gutter (near line numbers)
-NeoBundle 'jaxbot/github-issues.vim'
+"NeoBundle 'airblade/vim-gitgutter'         " Show git hunk changes on the gutter (near line numbers)
+"NeoBundle 'jaxbot/github-issues.vim'
 
 " Allows quickly posting to Gist
 NeoBundle 'mattn/gist-vim', {
@@ -240,6 +240,7 @@ NeoBundle 'tpope/vim-commentary', {
 " Highlight navigation for F/f
 NeoBundle 'unblevable/quick-scope'
 
+NeoBundle 'jaxbot/browserlink.vim'
 call neobundle#end()
 
 " Now that all syntax plugins are in the runtime path, turn on the syntax engine
@@ -286,8 +287,8 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#set_profile('files', 'smartcase', 1)
 call unite#custom#profile('files', 'filters', ['sorter_rank'])
 call unite#custom#source('line,outline','matchers','matcher_fuzzy')
-call unite#custom#source('file_rec', 'ignore_pattern', 'node_modules/')
-call unite#custom#source('file_rec', 'ignore_pattern', '.git/')
+call unite#custom#source('file_rec/async', 'ignore_pattern', 'node_modules/\|bower_components/')
+call unite#custom#source('file_rec', 'ignore_pattern', 'node_modules/\|bower_components/')
 let g:unite_source_history_yank_enable = 1
 nnoremap <leader>e :Unite -start-insert file_mru<cr>
 nnoremap <leader>f :Unite -start-insert file_rec<cr>
