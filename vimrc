@@ -115,6 +115,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Git/github integration
 NeoBundle 'tpope/vim-fugitive'             " The mother of all Git plugins, most build off of this
 
+
 "NeoBundle 'airblade/vim-gitgutter'         " Show git hunk changes on the gutter (near line numbers)
 "NeoBundle 'jaxbot/github-issues.vim'
 
@@ -174,6 +175,8 @@ NeoBundle 'Shougo/neomru.vim', {
 \  'lazy': 1,
 \  'depends': 'Shougo/unite.vim'
 \}
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 " Integrate Vim with tmux so I can seamlessly move between splits
 NeoBundle 'christoomey/vim-tmux-navigator'
@@ -367,6 +370,18 @@ function! Quick_scope_selective(movement)
 endfunction
 
 let g:qs_enable = 0
+
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <expr><TAB> pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/snippets'
 
 " Yosemite shell bug workaround
 " https://github.com/gmarik/Vundle.vim/issues/510
