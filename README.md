@@ -34,6 +34,12 @@ On OSX:
 ```
 brew update
 brew install python
+
+# vim
 brew install macvim --override-system-vim --custom-icons --with-lua
+
+# neovim
+brew install neovim/neovim/neovim
+pip3 install neovim
 ```
 

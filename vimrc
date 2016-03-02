@@ -250,7 +250,9 @@ NeoBundle 'tpope/vim-commentary', {
 " Highlight navigation for F/f
 NeoBundle 'unblevable/quick-scope'
 
-NeoBundle 'jaxbot/browserlink.vim'
+"NeoBundle 'jaxbot/browserlink.vim'
+
+NeoBundle 'Shougo/deoplete.nvim'
 call neobundle#end()
 
 " Now that all syntax plugins are in the runtime path, turn on the syntax engine
@@ -261,9 +263,12 @@ colorscheme jellybeans
 
 " Plugin configuration
 
-" Neocomplete
-" Automatically suggest things
-let g:neocomplete#enable_at_startup = 1
+if !has('nvim')
+    " Neocomplete
+    let g:neocomplete#enable_at_startup = 1
+else
+    let g:deoplete#enable_at_startup = 1
+endif
 " test matches Test and test, but Test only matches Test
 let g:neocomplete#enable_smart_case = 1
 " Show starting at 2 characters
