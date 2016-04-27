@@ -25,7 +25,7 @@ git submodule update
 :PluginInstall
 ```
 
-Tada.
+Booyah!
 
 ### My vim version
 
